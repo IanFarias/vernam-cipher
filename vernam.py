@@ -16,6 +16,11 @@ def readFile(path):
 
 def writeFile(path, content):
     try:
+        directory = os.path.dirname(path)
+        
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+
         with open(path, 'w', encoding ='utf-8') as file:
             file.write(str(content))
     except IOError as error:
